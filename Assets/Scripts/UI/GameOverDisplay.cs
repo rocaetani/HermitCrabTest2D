@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class PhaseEndDisplay : MonoBehaviour
+public class GameOverDisplay : MonoBehaviour
 {
     
     private GameManager _gameManager;

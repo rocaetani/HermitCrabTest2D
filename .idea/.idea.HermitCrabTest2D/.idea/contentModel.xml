@@ -10,6 +10,11 @@
           <e p="Controllers" t="Include">
             <e p="SceneController.cs" t="Include" />
           </e>
+          <e p="GameComponents" t="Include">
+            <e p="Checkpoint.cs" t="Include" />
+            <e p="EndGamePlatform.cs" t="Include" />
+            <e p="KillerTouch.cs" t="Include" />
+          </e>
           <e p="Input" t="Include">
             <e p="InputController.cs" t="Include" />
             <e p="PressType.cs" t="Include" />
@@ -17,23 +22,19 @@
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
           </e>
-          <e p="PhaseComponents" t="Include">
-            <e p="Checkpoint.cs" t="Include" />
-            <e p="EndPhasePlatform.cs" t="Include" />
-            <e p="KillerTouch.cs" t="Include" />
-          </e>
           <e p="Player" t="Include">
             <e p="Actions" t="Include">
               <e p="Jump.cs" t="Include" />
               <e p="Move.cs" t="Include" />
             </e>
             <e p="Player.cs" t="Include" />
+            <e p="PlayerState.cs" t="Include" />
             <e p="PlayerUI" t="Include">
               <e p="PlayerDisplay.cs" t="Include" />
             </e>
           </e>
           <e p="UI" t="Include">
-            <e p="PhaseEndDisplay.cs" t="Include" />
+            <e p="GameOverDisplay.cs" t="Include" />
             <e p="ReturnToMenu.cs" t="Include" />
             <e p="StartButton.cs" t="Include" />
           </e>

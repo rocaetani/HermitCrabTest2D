@@ -8,39 +8,62 @@ public class Jump : MonoBehaviour
     public float Thrust;
     
     private Rigidbody2D _rigidbody;
-    private bool _isGrounded;
+    public bool IsGrounded;
     private bool _shouldJump;
+
+    private Animator _animator;
+
+    public bool StopJump;
+    
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _isGrounded = true;
+        IsGrounded = true;
         _shouldJump = false;
+        _animator = GetComponent<Animator>();
+        StopJump = false;
     }
 
     private void Update()
     {
-        if (InputController.Instance.Jump())
+        if (!StopJump)
         {
-            _shouldJump = true;
+            if (InputController.Instance.Jump())
+            {
+                _shouldJump = true;
+            }
         }
+
     }
 
     private void FixedUpdate()
     {
-        if (_shouldJump & _isGrounded)
+        if (!StopJump)
         {
-            _isGrounded = false;
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.AddForce(transform.up * Thrust, ForceMode2D.Impulse);
-        }
+            if (_shouldJump & IsGrounded)
+            {
+                IsGrounded = false;
+                _rigidbody.velocity = Vector3.zero;
+                _rigidbody.AddForce(transform.up * Thrust, ForceMode2D.Impulse);
+                _animator.SetInteger(TagManager.PLAYER_ANIM_STATE, (int) PlayerState.Jump);
+            }
 
-        _shouldJump = false;
+            if (_rigidbody.velocity.y < 0)
+            {
+                _animator.SetInteger(TagManager.PLAYER_ANIM_STATE, (int) PlayerState.Fall);
+            }
+
+            _shouldJump = false;
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        _isGrounded = true;
+        IsGrounded = true;
     }
     
+    
+
+
 }

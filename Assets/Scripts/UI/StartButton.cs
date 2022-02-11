@@ -7,6 +7,6 @@ public class StartButton : MonoBehaviour
 {
     public void OnClick()
     {
-        SceneController.Instance.LoadPhase(TagManager.FIRST_PHASE_SCENE_TAG);
+        SceneController.Instance.LoadPhase(TagManager.GAME_SCENE_TAG);
     }
 }

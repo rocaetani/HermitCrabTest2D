@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadEndPhase()
     {
-        SceneManager.LoadScene(TagManager.END_PHASE_SCENE_TAG);
+        SceneManager.LoadScene(TagManager.GAME_OVER_SCENE_TAG);
     }
     public void LoadMenu()
     {

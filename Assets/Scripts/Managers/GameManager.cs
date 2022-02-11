@@ -55,12 +55,14 @@ public class GameManager : MonoBehaviour
         PositionPlayer();
     }
 
-    public void RestartPhase(Vector2 deathPosition)
+    public void RestartFromCheckpoint(Vector2 deathPosition)
     {
         PointsOfDeath.Add(deathPosition);
         int position = (int) deathPosition.x;
         FurthestPosition = position> FurthestPosition ? position : FurthestPosition;
         PositionPlayer();
+        StartCoroutine(nameof(StartMoving), 1.5f );
+        
     }
     
     public void PositionPlayer()
@@ -76,6 +78,12 @@ public class GameManager : MonoBehaviour
     public float TimeTillMoment()
     {
         return Time.time - _timePhaseStart;
+    }
+
+    public IEnumerator StartMoving(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        Player.EnableMovement();
     }
 
 }

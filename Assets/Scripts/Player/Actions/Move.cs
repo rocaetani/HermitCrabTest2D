@@ -9,27 +9,53 @@ public class Move : MonoBehaviour
     private Rigidbody2D _rigidbody;
     public float WalkSpeed;
     public float RunSpeed;
-    private float _speed;
+    public float _speed;
 
+    private Jump _jump;
+    
+    private Animator _animator;
+
+    
     public bool IsRunning;
+
+    public bool StopMoving;
 
 
     private void Start()
     {
+        _jump = GetComponent<Jump>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _speed = WalkSpeed;
+        StopMoving = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        _speed = InputController.Instance.Run() ? RunSpeed : WalkSpeed;
-        IsRunning = InputController.Instance.Run();
+        if (!StopMoving)
+        {
+            _speed = (WalkSpeed + _speed)/2;
+            IsRunning = false;
+            if (InputController.Instance.Run() && _jump.IsGrounded)
+            {
+                _speed = RunSpeed;
+                IsRunning = true;
+                _animator.SetInteger(TagManager.PLAYER_ANIM_STATE, (int) PlayerState.Run);
+            }
+        }
+        else
+        {
+            _rigidbody.velocity = Vector2.zero;
+        }
     }
     
     private void FixedUpdate()
     {
-        MoveUpdate();
+        if (!StopMoving)
+        {
+            MoveUpdate();
+        }
     }
 
     private void MoveUpdate()
