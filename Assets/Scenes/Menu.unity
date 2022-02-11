@@ -393,6 +393,8 @@ MonoBehaviour:
   PointsOfDeath: []
   FurthestPosition: 0
   Checkpoint: {x: 0, y: 0}
+  ReturnToCheckpoint: 0
+  PlayerSucceed: 0
 --- !u!4 &1482824192
 Transform:
   m_ObjectHideFlags: 0
@@ -450,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a4e0fc8a4639e4eac5886540d9e717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AdName: Interstitial_Android
+  AdName: Interstitial
 --- !u!1 &2073125649
 GameObject:
   m_ObjectHideFlags: 0

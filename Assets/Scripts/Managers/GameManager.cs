@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
     public int FurthestPosition;
 
     public Vector2 Checkpoint;
+
+    public bool ReturnToCheckpoint;
+
+    public bool PlayerSucceed;
     
     private void Awake()
     {
@@ -33,11 +37,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ReturnToCheckpoint = false;
         SceneController.Instance.OnPhaseLoaded += InitiatePhase;
     }
 
     public void EndPhase(bool playerSucceed)
     {
+        PlayerSucceed = playerSucceed;
         SceneController.Instance.LoadEndPhase();
         TimeTookOnPhase = Time.time - _timePhaseStart;
     }
@@ -49,8 +55,16 @@ public class GameManager : MonoBehaviour
         _timePhaseStart = Time.time;
         
         PointsOfDeath = new List<Vector2>();
-        Checkpoint = Vector2.zero;
-        
+
+        if (!ReturnToCheckpoint)
+        {
+            Checkpoint = Vector2.zero;
+        }
+        else
+        {
+            ReturnToCheckpoint = false;
+        }
+
         FurthestPosition = 0;
         PositionPlayer();
     }
@@ -61,13 +75,13 @@ public class GameManager : MonoBehaviour
         int position = (int) deathPosition.x;
         FurthestPosition = position> FurthestPosition ? position : FurthestPosition;
         PositionPlayer();
-        StartCoroutine(nameof(StartMoving), 1.5f );
-        
     }
     
     public void PositionPlayer()
     {
+        Player.DisableMovement();
         Player.transform.position = Checkpoint;
+        StartCoroutine(nameof(StartMoving), 1.5f );
     }
 
     public void RecordCheckpoint(Vector2 position)

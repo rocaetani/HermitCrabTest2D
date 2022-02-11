@@ -644,10 +644,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 5e74b779-1379-4693-ab6a-57ca3eee42e7
+  cloudProjectId: cd1e3594-3588-4894-9c23-424053a7fb37
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: HermitCrabTest2D (2)
+  projectName: HermitCrabTest2D
   organizationId: screed
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

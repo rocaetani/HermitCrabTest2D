@@ -10,6 +10,8 @@ public class GameOverDisplay : MonoBehaviour
     
     private GameManager _gameManager;
 
+    public Text Title;
+    
     public Text TimeText;
 
     public Text ScoreText;
@@ -19,6 +21,9 @@ public class GameOverDisplay : MonoBehaviour
     private void Start()
     {
         _gameManager = GameManager.Instance;
+
+        Title.text = _gameManager.PlayerSucceed ? "Success" : "Game Over";
+        
         PopulateValues();
 
     }

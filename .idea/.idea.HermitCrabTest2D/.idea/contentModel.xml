@@ -35,6 +35,7 @@
           </e>
           <e p="UI" t="Include">
             <e p="GameOverDisplay.cs" t="Include" />
+            <e p="ReturnCheckpointAds.cs" t="Include" />
             <e p="ReturnToMenu.cs" t="Include" />
             <e p="StartButton.cs" t="Include" />
           </e>

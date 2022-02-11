@@ -9,6 +9,7 @@ public class Move : MonoBehaviour
     private Rigidbody2D _rigidbody;
     public float WalkSpeed;
     public float RunSpeed;
+    public float TimeKeepsRunning;
     public float _speed;
 
     private Jump _jump;
@@ -19,6 +20,10 @@ public class Move : MonoBehaviour
     public bool IsRunning;
 
     public bool StopMoving;
+
+    private float _timeTillStopRunning;
+    
+    
 
 
     private void Start()
@@ -35,13 +40,24 @@ public class Move : MonoBehaviour
     {
         if (!StopMoving)
         {
-            _speed = (WalkSpeed + _speed)/2;
+            float timeLeftRunning = _timeTillStopRunning - Time.time;
+            if (timeLeftRunning > 0)
+            {
+                _speed = (WalkSpeed + (timeLeftRunning/TimeKeepsRunning) * (RunSpeed - WalkSpeed));
+            }
+            else
+            {
+                _speed = WalkSpeed;
+            }
+
+
             IsRunning = false;
             if (InputController.Instance.Run() && _jump.IsGrounded)
             {
                 _speed = RunSpeed;
                 IsRunning = true;
                 _animator.SetInteger(TagManager.PLAYER_ANIM_STATE, (int) PlayerState.Run);
+                _timeTillStopRunning = Time.time + TimeKeepsRunning;
             }
         }
         else

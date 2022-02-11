@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     private Jump _jump;
 
     private Animator _animator;
+    private Rigidbody2D _rigidbody2D;
     
     private bool _lifeAlreadyReduced;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         _move = GetComponent<Move>();
         _jump = GetComponent<Jump>();
         _animator = GetComponent<Animator>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         
         Life = 3;
         PlayerDisplay.StartFilledLife();
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
             PlayerDisplay.EmptyLife();
             if (Life == 0)
             {
+                _rigidbody2D.velocity = Vector2.zero;
                 _gameManager.EndPhase(false);
             }
             else
