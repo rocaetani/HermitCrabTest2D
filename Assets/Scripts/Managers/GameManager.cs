@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public bool ReturnToCheckpoint;
 
     public bool PlayerSucceed;
+
+    private float _timeBeforeReturnToCheckpoint;
     
     private void Awake()
     {
@@ -44,8 +46,9 @@ public class GameManager : MonoBehaviour
     public void EndPhase(bool playerSucceed)
     {
         PlayerSucceed = playerSucceed;
+        UpdateFurthestPosition((int) Player.transform.position.x);
+        TimeTookOnPhase = (Time.time - _timePhaseStart) + _timeBeforeReturnToCheckpoint;
         SceneController.Instance.LoadEndPhase();
-        TimeTookOnPhase = Time.time - _timePhaseStart;
     }
 
     public void InitiatePhase()
@@ -55,14 +58,19 @@ public class GameManager : MonoBehaviour
         _timePhaseStart = Time.time;
         
         PointsOfDeath = new List<Vector2>();
+        
+        Player.SetToIdle();
 
         if (!ReturnToCheckpoint)
         {
             Checkpoint = Vector2.zero;
+            _timeBeforeReturnToCheckpoint = 0;
         }
         else
         {
+            _timeBeforeReturnToCheckpoint = TimeTookOnPhase;
             ReturnToCheckpoint = false;
+            
         }
 
         FurthestPosition = 0;
@@ -73,7 +81,7 @@ public class GameManager : MonoBehaviour
     {
         PointsOfDeath.Add(deathPosition);
         int position = (int) deathPosition.x;
-        FurthestPosition = position> FurthestPosition ? position : FurthestPosition;
+        UpdateFurthestPosition(position);
         PositionPlayer();
     }
     
@@ -91,13 +99,18 @@ public class GameManager : MonoBehaviour
 
     public float TimeTillMoment()
     {
-        return Time.time - _timePhaseStart;
+        return Time.time - _timePhaseStart + _timeBeforeReturnToCheckpoint;
     }
 
     public IEnumerator StartMoving(float waitSeconds)
     {
         yield return new WaitForSeconds(waitSeconds);
         Player.EnableMovement();
+    }
+
+    public void UpdateFurthestPosition(int position)
+    {
+        FurthestPosition = position > FurthestPosition ? position : FurthestPosition;
     }
 
 }

@@ -4,6 +4,7 @@
     <e p="C:\Users\rocae\.Rider2019.1\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\rocae\.Rider2019.1\system\resharper-host\local\Transient\ReSharperHost\v191\SolutionCaches\_HermitCrabTest2D.-1314235847.00" t="ExcludeRecursive" />
     <e p="C:\Users\rocae\Projects\HermitCrabTest2D" t="IncludeRecursive">
+      <e p="Analytics.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -21,6 +22,11 @@
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
+          </e>
+          <e p="MobileManagers" t="Include">
+            <e p="AdsManager.cs" t="Include" />
+            <e p="AnalyticsManager.cs" t="Include" />
+            <e p="DeviceManager.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
             <e p="Actions" t="Include">
@@ -40,9 +46,7 @@
             <e p="StartButton.cs" t="Include" />
           </e>
           <e p="Util" t="Include">
-            <e p="AdsManager.cs" t="Include" />
             <e p="CameraFollow.cs" t="Include" />
-            <e p="DeviceManager.cs" t="Include" />
             <e p="TagManager.cs" t="Include" />
             <e p="TimeFormatter.cs" t="Include" />
           </e>
@@ -856,6 +860,18 @@
                 <e p="UnityServicesErrorEventArgs.cs" t="Include" />
                 <e p="UnsupportedPlatform.cs" t="Include" />
               </e>
+            </e>
+          </e>
+          <e p="com.unity.analytics@3.5.3" t="Include">
+            <e p="DataPrivacy" t="Include">
+              <e p="AssemblyInfo.cs" t="Include" />
+              <e p="DataPrivacy.cs" t="Include" />
+              <e p="DataPrivacyButton.cs" t="Include" />
+              <e p="Unity.Analytics.DataPrivacy.asmdef" t="Include" />
+            </e>
+            <e p="Editor" t="Include">
+              <e p="Analytics.asmdef" t="Include" />
+              <e p="AnalyticsEditorCallbacks.cs" t="Include" />
             </e>
           </e>
           <e p="com.unity.collab-proxy@1.3.9" t="Include">
@@ -2168,6 +2184,7 @@
       <e p="Unity.2D.Psdimporter.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.2D.SpriteShape.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.2D.SpriteShape.Runtime.csproj" t="IncludeRecursive" />
+      <e p="Unity.Analytics.DataPrivacy.csproj" t="IncludeRecursive" />
       <e p="Unity.CollabProxy.Editor.csproj" t="IncludeRecursive" />
       <e p="Unity.InternalAPIEditorBridge.001.csproj" t="IncludeRecursive" />
       <e p="Unity.InternalAPIEngineBridge.001.csproj" t="IncludeRecursive" />

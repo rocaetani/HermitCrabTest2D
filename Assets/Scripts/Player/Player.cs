@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
 
     public void ReduceLife()
     {
+        AnalyticsManager.Instance.AddDeathPosition(transform.position);
         if (!_lifeAlreadyReduced)
         {
             _lifeAlreadyReduced = true;
@@ -99,7 +100,12 @@ public class Player : MonoBehaviour
         _move.StopMoving = true;
         _jump.StopJump = true; 
     }
-    
-    
-    
+
+    public void SetToIdle()
+    {
+        _animator.SetInteger(TagManager.PLAYER_ANIM_STATE, (int) PlayerState.Idle);
+    }
+
+
+
 }

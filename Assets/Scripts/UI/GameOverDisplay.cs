@@ -18,12 +18,24 @@ public class GameOverDisplay : MonoBehaviour
 
     public Text DeathText;
 
+    public GameObject ReturnToCheckpoint;
+
     private void Start()
     {
         _gameManager = GameManager.Instance;
-
-        Title.text = _gameManager.PlayerSucceed ? "Success" : "Game Over";
         
+        if (_gameManager.PlayerSucceed)
+        {
+            Title.text = "Success";
+            ReturnToCheckpoint.SetActive(false);
+        }
+        else
+        {
+            Title.text = "Game Over";
+            ReturnToCheckpoint.SetActive(true);
+        }
+
+
         PopulateValues();
 
     }
