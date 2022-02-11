@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EndGamePlatform : MonoBehaviour
 {
-    public void OnCollisionEnter(Collision other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag(TagManager.PLAYER_TAG))
         {
